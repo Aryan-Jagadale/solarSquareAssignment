@@ -1,3 +1,10 @@
+<div align="center">
+
+  <img src="/ui/src/assets/train-logo.jpg" 
+        alt="Logo" width="290" height="290">
+</div>
+
+
 ## About
 
  A backend(NodeJs) and frontend(ReactJs) e-ticketing system like IRCTC Web Application which communicates via API.
@@ -21,7 +28,7 @@
     npm i
     npm run dev
 ```
-- Make sure to have env variable in .env file.
+- Make sure to have env variable in .env file in backend directory in root.
   
 ```bash
     PORT = 4000
