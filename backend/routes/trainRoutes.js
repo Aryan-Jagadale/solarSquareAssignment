@@ -1,6 +1,6 @@
 import express from "express";
 import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
-import { getSingleTrainRouteData, getTrainRouteData } from "../controllers/trainCOntroller.js";
+import { getSingleTrainRouteData, getTrainRouteData } from "../controllers/trainController.js";
 
 const router = express.Router();
 
