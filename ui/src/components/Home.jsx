@@ -7,6 +7,7 @@ import { inputClassName } from "../constants";
 import InfoButton from "./Button/InfoButton";
 import ModalWrapper from "./Modals/ModalWrapper";
 import TrainRouteForm from "./Modals/TrainRouteForm";
+import Text from "./Text";
 
 const Home = () => {
   //REDUCERS
@@ -62,11 +63,12 @@ const Home = () => {
             type="text"
             name="name"
             placeholder="Search by train name"
-            style={{ marginRight: "10px", width: "100%" }}
+            style={{ marginRight: "10px", width: "100%",border:"1px solid black",borderRadius:"4px" }}
             className={inputClassName}
             value={keyword}
             onChange={onInputChangeHandler}
           />
+          <Text/>
         </section>
       </div>
       <div className="w-[70%] ml-1/4 p-4 overflow-auto">
