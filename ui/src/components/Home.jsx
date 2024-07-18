@@ -8,6 +8,7 @@ import InfoButton from "./Button/InfoButton";
 import ModalWrapper from "./Modals/ModalWrapper";
 import TrainRouteForm from "./Modals/TrainRouteForm";
 import Text from "./Text";
+import { RotatingLines } from "react-loader-spinner";
 
 const Home = () => {
   //REDUCERS
@@ -17,6 +18,8 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
+  // LOADING STATE
+  const [loading, setLoading] = useState(false);
 
   //MODAL STATE
   const [open, setOpen] = useState(false);
@@ -42,7 +45,10 @@ const Home = () => {
   };
 
   const debounceSearch = useCallback(
-    debounceFunction((keyword) => dispatch(getAllTrainRoutes(keyword)), 200),
+    debounceFunction((keyword) => {
+      setLoading(true); // Set loading to true when search starts
+      dispatch(getAllTrainRoutes(keyword)).finally(() => setLoading(false)); // Set loading to false when search completes
+    }, 200),
     []
   );
 
@@ -63,12 +69,17 @@ const Home = () => {
             type="text"
             name="name"
             placeholder="Search by train name"
-            style={{ marginRight: "10px", width: "100%",border:"1px solid black",borderRadius:"4px" }}
+            style={{
+              marginRight: "10px",
+              width: "100%",
+              border: "1px solid black",
+              borderRadius: "4px",
+            }}
             className={inputClassName}
             value={keyword}
             onChange={onInputChangeHandler}
           />
-          <Text/>
+          <Text />
         </section>
       </div>
       <div className="w-[70%] ml-1/4 p-4 overflow-auto">
@@ -84,27 +95,36 @@ const Home = () => {
                 onClick={onOpenModal}
               />
               <ModalWrapper open={open} onClose={onCloseModal}>
-                <TrainRouteForm isEditMode={false}/>
+                <TrainRouteForm isEditMode={false} />
               </ModalWrapper>
             </div>
           </>
         )}
-        {trainRoutes &&
-          trainRoutes.map((item) => {
-            return (
-              <Card
-                key={item._id}
-                item={item}
-                onClick={() => handleClick(item._id)}
-              />
-            );
-          })}
-        {trainRoutes.length === 0 && (
-          <>
-            <section className="h-full flex items-center justify-center">
-              <p>404, No results !!</p>
-            </section>
-          </>
+        {loading ? (
+          <div className="h-full flex items-center justify-center">
+            <RotatingLines
+              visible={true}
+              height="46"
+              width="46"
+              color="blue"
+              strokeColor="blue"
+              strokeWidth="3"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+            />
+          </div>
+        ): trainRoutes.length === 0 ? (
+          <section className="h-full flex items-center justify-center">
+            <p>404, No results !!</p>
+          </section>
+        ) : (
+          trainRoutes.map((item) => (
+            <Card
+              key={item._id}
+              item={item}
+              onClick={() => handleClick(item._id)}
+            />
+          ))
         )}
       </div>
     </div>
