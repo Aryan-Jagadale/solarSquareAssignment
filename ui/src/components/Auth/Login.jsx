@@ -5,8 +5,8 @@ import { login } from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const [email, setEmail] = useState("test@gmail.com");
-  const [password, setPassword] = useState("test");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
