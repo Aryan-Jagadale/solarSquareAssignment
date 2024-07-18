@@ -16,7 +16,7 @@ mongoose
 // Using Middlewares
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL,process.env.FRONTEND_URL_BUILD],
+    origin: [process.env.FRONTEND_URL,process.env.FRONTEND_URL_BUILD,process.env.FRONTEND_URL_BUILD_2],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
