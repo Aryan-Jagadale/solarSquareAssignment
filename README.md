@@ -40,3 +40,17 @@
 ```
 
 - You are ready for setup.
+
+## Credentials to Explore app
+
+ - Admin
+   ```bash
+       email=test@gmail.com
+       password=test
+   ```
+- Dummy User
+   ```bash
+       email=joker@gmail.com
+       password=joker
+   ```
+
