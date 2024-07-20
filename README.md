@@ -4,6 +4,11 @@
         alt="Logo" width="290" height="290">
 </div>
 
+## NOTE
+
+ As the backend instances are deployed on free services it takes one minute to up them. Below are the dummy admin and user credentials. 
+ ( AFTER ENTERING THE CREDENTIALS, TRY  TO HIT LOGIN MULTIPLE TIMES )
+
 
 ## About
 
